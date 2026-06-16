@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+const siteUrl = 'https://2048.lazytoolshub.top';
+const pageUrl = canonical || siteUrl;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0a0a1a" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={pageUrl} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={pageUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="2048 Cyberpunk" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "2048 Game - Cyberpunk Edition",
+    "description": description,
+    "url": pageUrl,
+    "applicationCategory": "Game",
+    "operatingSystem": "Any (Browser)",
+    "genre": "Puzzle",
+    "numberOfPlayers": 1,
+    "gamePlatform": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How to play 2048?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use arrow keys or swipe to slide numbered tiles. When two tiles with the same number collide, they merge into one tile with double the value. Reach 2048 to win!"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is 2048 free to play?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 2048 is completely free to play online. No registration required."
+        }
+      }
+    ]
+  })} />
+
+</head>
+<body>
+  <slot />
+</body>
+</html>

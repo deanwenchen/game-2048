@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+
+const TITLE = 'Play 2048 Online Free - Cyberpunk Edition | 2048 Game Unblocked';
+const DESC = 'Play 2048 game online for free. Cyberpunk neon theme, smooth animations, keyboard & swipe controls. No download, no registration. The ultimate unblocked 2048 puzzle game.';
+---
+
+<Layout title={TITLE} description={DESC}>
+  <!-- Hero -->
+    <header class="hero">
+      <h1>2048</h1>
+      <p class="subtitle">Cyberpunk Edition — Slide, Merge, Conquer</p>
+    </header>
+
+    <!-- Main Game Layout: Left Ad | Game | Right Ad -->
+    <main class="game-layout">
+
+      <!-- Left Ad Slot -->
+      <aside class="ad-slot ad-slot-side" aria-label="Advertisement">
+        <!-- Google AdSense: Left Sidebar 160x600 / 300x250 -->
+        <span>Ad Space</span>
+      </aside>
+
+      <!-- Game Column -->
+      <div class="game-column">
+        <!-- Score Bar -->
+        <div class="score-bar">
+          <div class="score-box">
+            <span class="score-label">Score</span>
+            <span class="score-value" id="score">0</span>
+          </div>
+          <div class="score-box">
+            <span class="score-label">Best</span>
+            <span class="score-value" id="best-score">0</span>
+          </div>
+          <button class="btn-restart" id="btn-restart" aria-label="Restart game">New Game</button>
+        </div>
+
+        <!-- Game Container -->
+        <div class="game-container">
+          <div class="grid-board" id="grid-board">
+            <!-- Empty cell backgrounds -->
+            <div class="grid-bg" id="grid-bg"></div>
+            <!-- Tile layer -->
+            <div class="tile-layer" id="tile-layer"></div>
+          </div>
+
+          <!-- Game Over / Win Overlay -->
+          <div class="game-overlay" id="game-overlay">
+            <h2 id="overlay-title">Game Over</h2>
+            <p id="overlay-text">Final Score: 0</p>
+            <div class="overlay-buttons" id="overlay-buttons">
+              <button class="btn-overlay primary" id="btn-restart-overlay">New Game</button>
+              <button class="btn-overlay secondary" id="btn-continue" style="display:none;">Keep Playing</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Ad Slot -->
+        <div class="ad-slot ad-slot-bottom" aria-label="Advertisement">
+          <!-- Google AdSense: Bottom 728x90 -->
+          <span>Ad Space</span>
+        </div>
+      </div>
+
+      <!-- Right Ad Slot -->
+      <aside class="ad-slot ad-slot-side" aria-label="Advertisement">
+        <!-- Google AdSense: Right Sidebar 160x600 / 300x250 -->
+        <span>Ad Space</span>
+      </aside>
+
+    </main>
+
+    <!-- How to Play -->
+    <section class="content-section">
+      <h2>How to Play 2048 Online</h2>
+      <p>2048 is a addictive sliding tile puzzle game. Your goal is to combine numbered tiles to reach the legendary 2048 tile. Slide tiles in any direction to move them across the board. When two tiles with the same number collide, they merge into one tile worth double the value.</p>
+      <div class="controls-grid">
+        <div class="control-item">
+          <kbd>&uarr;</kbd> <kbd>&darr;</kbd> <kbd>&larr;</kbd> <kbd>&rarr;</kbd>
+          <p>Arrow Keys to slide</p>
+        </div>
+        <div class="control-item">
+          <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>
+          <p>WASD alternative</p>
+        </div>
+        <div class="control-item">
+          <kbd>Swipe</kbd>
+          <p>Touch screen swipe</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Rules -->
+    <section class="content-section">
+      <h2>Game Rules &amp; Scoring</h2>
+      <p>Every time you merge two tiles, the value of the new tile is added to your score. A 2+2 merge earns 4 points, a 4+4 merge earns 8 points, and so on. The game ends when no more moves are possible — meaning the board is full and no adjacent tiles share the same value.</p>
+      <p>After each move, a new tile (either 2 or 4) appears randomly on an empty cell. Plan your moves carefully to avoid filling up the board before reaching 2048!</p>
+    </section>
+
+    <!-- Strategy Tips -->
+    <section class="content-section">
+      <h2>Pro Tips &amp; Strategies</h2>
+      <ul class="tips-list">
+        <li>Keep your highest-value tile in a corner — it acts as an anchor for building larger tiles.</li>
+        <li>Build a chain of descending values along one edge (e.g., 1024 &rarr; 512 &rarr; 256 &rarr; 128).</li>
+        <li>Avoid pressing the &quot;down&quot; arrow randomly — it breaks your corner strategy.</li>
+        <li>Plan at least 2-3 moves ahead. Each move should bring you closer to merging your target tiles.</li>
+        <li>When the board gets crowded, focus on freeing up space by merging low-value tiles first.</li>
+        <li>After reaching 2048, you can continue playing to chase even higher tiles like 4096 and 8192!</li>
+      </ul>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="content-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Is 2048 free to play?</h3>
+        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <span itemprop="text">Yes, this 2048 game is completely free. No registration, no downloads. Just open the page and start playing instantly in any modern browser.</span>
+        </p>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Can I play 2048 on mobile?</h3>
+        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <span itemprop="text">Absolutely! This 2048 game is fully responsive and supports touch swipe controls on smartphones and tablets. The layout adapts automatically to any screen size.</span>
+        </p>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Does my score get saved?</h3>
+        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <span itemprop="text">Yes! Your best score is saved automatically in your browser's local storage. It persists across sessions, so you can track your progress over time.</span>
+        </p>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">What happens after I reach 2048?</h3>
+        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <span itemprop="text">You can choose to keep playing! After reaching 2048, click &quot;Keep Playing&quot; to continue merging tiles and chase higher values like 4096, 8192, and beyond.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- SEO Content Block -->
+    <section class="content-section">
+      <h2>About This 2048 Game</h2>
+      <p>This is the ultimate unblocked 2048 game experience, featuring a stunning cyberpunk neon aesthetic that sets it apart from every other version online. Play 2048 online directly in your browser with zero friction — no downloads, no sign-ups, no ads interrupting your gameplay.</p>
+      <p>Whether you're looking for a quick brain teaser during a break or a long strategic session to beat your personal best, our 2048 game delivers smooth animations, responsive controls, and an addictive gameplay loop that keeps you coming back. The neon glow effects and dark theme make it easy on the eyes during extended play sessions.</p>
+      <p>Challenge yourself to beat your high score, master the corner strategy, and see how far you can push the tiles. Can you reach beyond 2048 and unlock the elusive 8192 tile?</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2024 <a href="https://2048.lazytoolshub.top">2048.lazytoolshub.top</a> — Free Online 2048 Game. All rights reserved.</p>
+    </footer>
+
+    <!-- Generate grid cell backgrounds + wire overlay restart -->
+    <script is:inline>
+      (function() {
+        var gridBg = document.getElementById('grid-bg');
+        if (!gridBg) return;
+        var cs = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cell-size'));
+        var cg = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--cell-gap'));
+        var gp = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--grid-pad'));
+        for (var r = 0; r < 4; r++) {
+          for (var c = 0; c < 4; c++) {
+            var span = document.createElement('span');
+            span.style.left = (gp + c * (cs + cg)) + 'px';
+            span.style.top = (gp + r * (cs + cg)) + 'px';
+            gridBg.appendChild(span);
+          }
+        }
+
+        var restartOverlay = document.getElementById('btn-restart-overlay');
+        if (restartOverlay) {
+          restartOverlay.addEventListener('click', function() {
+            localStorage.removeItem('2048_state');
+            location.reload();
+          });
+        }
+      })();
+    </script>
+
+    <!-- Game Engine -->
+    <script>
+      import '../scripts/game.js';
+    </script>
+</Layout>
