@@ -3,11 +3,14 @@
   'use strict';
 
   const SIZE = 4;
-  const MOVE_MS = 150;
-  const FADE_MS = 250;
-  const POP_MS = 250;
-  const MERGE_POP_MS = 300;
   const SWIPE_MIN = 30;
+
+  // Respect prefers-reduced-motion
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MOVE_MS = reducedMotion ? 0 : 150;
+  const FADE_MS = reducedMotion ? 0 : 250;
+  const POP_MS = reducedMotion ? 0 : 250;
+  const MERGE_POP_MS = reducedMotion ? 0 : 300;
 
   // DOM
   const gridBoard = document.getElementById('grid-board');
