@@ -7,154 +7,108 @@ const DESC = 'Play 2048 game online for free. Cyberpunk neon theme, smooth anima
 ---
 
 <Layout title={TITLE} description={DESC}>
-  <!-- Hero -->
     <header class="hero">
       <h1>2048</h1>
-      <p class="subtitle">Cyberpunk Edition - Slide, Merge, Conquer</p>
+      <p class="subtitle" data-i18n="subtitle">Cyberpunk Edition - Slide, Merge, Conquer</p>
     </header>
 
-    <!-- Main Game Layout: Left Ad | Game | Right Ad -->
     <main class="game-layout">
+      <aside class="ad-slot ad-slot-side" aria-label="Advertisement"><span>Ad Space</span></aside>
 
-      <!-- Left Ad Slot -->
-      <aside class="ad-slot ad-slot-side" aria-label="Advertisement">
-        <!-- Google AdSense: Left Sidebar 160x600 / 300x250 -->
-        <span>Ad Space</span>
-      </aside>
-
-      <!-- Game Column -->
       <div class="game-column">
-        <!-- Score Bar -->
         <div class="score-bar">
           <div class="score-box">
-            <span class="score-label">Score</span>
+            <span class="score-label" data-i18n="scoreLabel">Score</span>
             <span class="score-value" id="score">0</span>
           </div>
           <div class="score-box">
-            <span class="score-label">Best</span>
+            <span class="score-label" data-i18n="bestLabel">Best</span>
             <span class="score-value" id="best-score">0</span>
           </div>
-          <button class="btn-restart" id="btn-restart" aria-label="Restart game">New Game</button>
+          <button class="btn-restart" id="btn-restart" aria-label="Restart game" data-i18n="newGame">New Game</button>
         </div>
 
-        <!-- Game Container -->
         <div class="game-container">
           <div class="grid-board" id="grid-board">
-            <!-- Empty cell backgrounds -->
             <div class="grid-bg" id="grid-bg"></div>
-            <!-- Tile layer -->
             <div class="tile-layer" id="tile-layer"></div>
           </div>
 
-          <!-- Game Over / Win Overlay -->
           <div class="game-overlay" id="game-overlay">
-            <h2 id="overlay-title">Game Over</h2>
-            <p id="overlay-text">Final Score: 0</p>
+            <h2 id="overlay-title" data-i18n="gameOver">Game Over</h2>
+            <p id="overlay-text" data-i18n="finalScore">Final Score: 0</p>
             <div class="overlay-buttons" id="overlay-buttons">
-              <button class="btn-overlay primary" id="btn-restart-overlay">New Game</button>
-              <button class="btn-overlay secondary" id="btn-continue" style="display:none;">Keep Playing</button>
+              <button class="btn-overlay primary" id="btn-restart-overlay" data-i18n="newGame">New Game</button>
+              <button class="btn-overlay secondary" id="btn-continue" style="display:none;" data-i18n="keepPlaying">Keep Playing</button>
             </div>
           </div>
         </div>
 
-        <!-- Bottom Ad Slot -->
-        <div class="ad-slot ad-slot-bottom" aria-label="Advertisement">
-          <!-- Google AdSense: Bottom 728x90 -->
-          <span>Ad Space</span>
-        </div>
+        <div class="ad-slot ad-slot-bottom" aria-label="Advertisement"><span>Ad Space</span></div>
       </div>
 
-      <!-- Right Ad Slot -->
-      <aside class="ad-slot ad-slot-side" aria-label="Advertisement">
-        <!-- Google AdSense: Right Sidebar 160x600 / 300x250 -->
-        <span>Ad Space</span>
-      </aside>
-
+      <aside class="ad-slot ad-slot-side" aria-label="Advertisement"><span>Ad Space</span></aside>
     </main>
 
-    <!-- How to Play -->
     <section class="content-section">
-      <h2>How to Play 2048 Online</h2>
-      <p>2048 is a addictive sliding tile puzzle game. Your goal is to combine numbered tiles to reach the legendary 2048 tile. Slide tiles in any direction to move them across the board. When two tiles with the same number collide, they merge into one tile worth double the value.</p>
+      <h2 data-i18n="howToTitle">How to Play 2048 Online</h2>
+      <p data-i18n="howToDesc">2048 is an addictive sliding tile puzzle game. Your goal is to combine numbered tiles to reach the legendary 2048 tile.</p>
       <div class="controls-grid">
-        <div class="control-item">
-          <kbd>&uarr;</kbd> <kbd>&darr;</kbd> <kbd>&larr;</kbd> <kbd>&rarr;</kbd>
-          <p>Arrow Keys to slide</p>
-        </div>
-        <div class="control-item">
-          <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>
-          <p>WASD alternative</p>
-        </div>
-        <div class="control-item">
-          <kbd>Swipe</kbd>
-          <p>Touch screen swipe</p>
-        </div>
+        <div class="control-item"><kbd>&uarr;</kbd> <kbd>&darr;</kbd> <kbd>&larr;</kbd> <kbd>&rarr;</kbd><p data-i18n="ctrlArrow">Arrow Keys to slide</p></div>
+        <div class="control-item"><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd><p data-i18n="ctrlWasd">WASD alternative</p></div>
+        <div class="control-item"><kbd data-i18n="kbdSwipe">Swipe</kbd><p data-i18n="ctrlSwipe">Touch screen swipe</p></div>
       </div>
     </section>
 
-    <!-- Game Rules -->
     <section class="content-section">
-      <h2>Game Rules &amp; Scoring</h2>
-      <p>Every time you merge two tiles, the value of the new tile is added to your score. A 2+2 merge earns 4 points, a 4+4 merge earns 8 points, and so on. The game ends when no more moves are possible, meaning the board is full and no adjacent tiles share the same value.</p>
-      <p>After each move, a new tile (either 2 or 4) appears randomly on an empty cell. Plan your moves carefully to avoid filling up the board before reaching 2048!</p>
+      <h2 data-i18n="rulesTitle">Game Rules &amp; Scoring</h2>
+      <p data-i18n="rules1">Every time you merge two tiles, the value of the new tile is added to your score. A 2+2 merge earns 4 points, a 4+4 merge earns 8 points. The game ends when no more moves are possible.</p>
+      <p data-i18n="rules2">After each move, a new tile (either 2 or 4) appears randomly on an empty cell. Plan your moves carefully to avoid filling up the board before reaching 2048!</p>
     </section>
 
-    <!-- Strategy Tips -->
     <section class="content-section">
-      <h2>Pro Tips &amp; Strategies</h2>
+      <h2 data-i18n="tipsTitle">Pro Tips &amp; Strategies</h2>
       <ul class="tips-list">
-        <li>Keep your highest-value tile in a corner. It acts as an anchor for building larger tiles.</li>
-        <li>Build a chain of descending values along one edge (e.g., 1024 &rarr; 512 &rarr; 256 &rarr; 128).</li>
-        <li>Avoid pressing the &quot;down&quot; arrow randomly. It breaks your corner strategy.</li>
-        <li>Plan at least 2-3 moves ahead. Each move should bring you closer to merging your target tiles.</li>
-        <li>When the board gets crowded, focus on freeing up space by merging low-value tiles first.</li>
-        <li>After reaching 2048, you can continue playing to chase even higher tiles like 4096 and 8192!</li>
+        <li data-i18n="tip1">Keep your highest-value tile in a corner. It acts as an anchor for building larger tiles.</li>
+        <li data-i18n="tip2">Build a chain of descending values along one edge (e.g., 1024 → 512 → 256 → 128).</li>
+        <li data-i18n="tip3">Avoid pressing the "down" arrow randomly. It breaks your corner strategy.</li>
+        <li data-i18n="tip4">Plan at least 2-3 moves ahead.</li>
+        <li data-i18n="tip5">When the board gets crowded, focus on freeing up space by merging low-value tiles first.</li>
+        <li data-i18n="tip6">After reaching 2048, you can continue playing to chase even higher tiles like 4096 and 8192!</li>
       </ul>
     </section>
 
-    <!-- FAQ Section -->
     <section class="content-section">
-      <h2>Frequently Asked Questions</h2>
+      <h2 data-i18n="faqTitle">Frequently Asked Questions</h2>
       <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-        <h3 itemprop="name">Is 2048 free to play?</h3>
-        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-          <span itemprop="text">Yes, this 2048 game is completely free. No registration, no downloads. Just open the page and start playing instantly in any modern browser.</span>
-        </p>
+        <h3 itemprop="name" data-i18n="fq1">Is 2048 free to play?</h3>
+        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text" data-i18n="fa1">Yes, this 2048 game is completely free. No registration, no downloads.</span></p>
       </div>
       <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-        <h3 itemprop="name">Can I play 2048 on mobile?</h3>
-        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-          <span itemprop="text">Absolutely! This 2048 game is fully responsive and supports touch swipe controls on smartphones and tablets. The layout adapts automatically to any screen size.</span>
-        </p>
+        <h3 itemprop="name" data-i18n="fq2">Can I play 2048 on mobile?</h3>
+        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text" data-i18n="fa2">Absolutely! This 2048 game is fully responsive and supports touch swipe controls on smartphones and tablets.</span></p>
       </div>
       <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-        <h3 itemprop="name">Does my score get saved?</h3>
-        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-          <span itemprop="text">Yes! Your best score is saved automatically in your browser's local storage. It persists across sessions, so you can track your progress over time.</span>
-        </p>
+        <h3 itemprop="name" data-i18n="fq3">Does my score get saved?</h3>
+        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text" data-i18n="fa3">Yes! Your best score is saved automatically in your browser's local storage.</span></p>
       </div>
       <div class="faq-item" itemscope itemtype="https://schema.org/Question">
-        <h3 itemprop="name">What happens after I reach 2048?</h3>
-        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-          <span itemprop="text">You can choose to keep playing! After reaching 2048, click &quot;Keep Playing&quot; to continue merging tiles and chase higher values like 4096, 8192, and beyond.</span>
-        </p>
+        <h3 itemprop="name" data-i18n="fq4">What happens after I reach 2048?</h3>
+        <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><span itemprop="text" data-i18n="fa4">You can choose to keep playing! After reaching 2048, click "Keep Playing" to continue.</span></p>
       </div>
     </section>
 
-    <!-- SEO Content Block -->
     <section class="content-section">
-      <h2>About This 2048 Game</h2>
-      <p>This is the ultimate unblocked 2048 game experience, featuring a stunning cyberpunk neon aesthetic that sets it apart from every other version online. Play 2048 online directly in your browser with zero friction: no downloads, no sign-ups, no ads interrupting your gameplay.</p>
-      <p>Whether you're looking for a quick brain teaser during a break or a long strategic session to beat your personal best, our 2048 game delivers smooth animations, responsive controls, and an addictive gameplay loop that keeps you coming back. The neon glow effects and dark theme make it easy on the eyes during extended play sessions.</p>
-      <p>Challenge yourself to beat your high score, master the corner strategy, and see how far you can push the tiles. Can you reach beyond 2048 and unlock the elusive 8192 tile?</p>
+      <h2 data-i18n="aboutTitle">About This 2048 Game</h2>
+      <p data-i18n="about1">This is the ultimate unblocked 2048 game experience, featuring a stunning cyberpunk neon aesthetic.</p>
+      <p data-i18n="about2">Our 2048 game delivers smooth animations, responsive controls, and an addictive gameplay loop.</p>
+      <p data-i18n="about3">Challenge yourself to beat your high score. Can you reach beyond 2048?</p>
     </section>
 
-    <!-- Footer -->
     <footer class="site-footer">
-      <p>&copy; 2024 <a href="https://2048.lazytoolshub.top">2048.lazytoolshub.top</a> - Free Online 2048 Game. All rights reserved.</p>
+      <p>&copy; 2024 <a href="https://2048.lazytoolshub.top">2048.lazytoolshub.top</a> - <span data-i18n="footerNote">Free Online 2048 Game. All rights reserved.</span></p>
     </footer>
 
-    <!-- Generate grid cell backgrounds + wire overlay restart -->
     <script is:inline>
       (function() {
         var gridBg = document.getElementById('grid-bg');
@@ -170,7 +124,6 @@ const DESC = 'Play 2048 game online for free. Cyberpunk neon theme, smooth anima
             gridBg.appendChild(span);
           }
         }
-
         var restartOverlay = document.getElementById('btn-restart-overlay');
         if (restartOverlay) {
           restartOverlay.addEventListener('click', function() {
@@ -181,8 +134,63 @@ const DESC = 'Play 2048 game online for free. Cyberpunk neon theme, smooth anima
       })();
     </script>
 
-    <!-- Game Engine -->
     <script>
       import '../scripts/game.js';
+    </script>
+
+    <script is:inline>
+    (function(){
+    var LANGS={en:'English',es:'Español',de:'Deutsch',fr:'Français',ja:'日本語',zh:'简体中文',pt:'Português',it:'Italiano',ru:'Русский',ko:'한국어',ar:'العربية',hi:'हिन्दी',th:'ไทย',tr:'Türkçe'};
+    var translations={
+en:{subtitle:'Cyberpunk Edition - Slide, Merge, Conquer',scoreLabel:'Score',bestLabel:'Best',newGame:'New Game',gameOver:'Game Over',finalScore:'Final Score: 0',keepPlaying:'Keep Playing',howToTitle:'How to Play 2048 Online',howToDesc:'2048 is an addictive sliding tile puzzle game. Your goal is to combine numbered tiles to reach the legendary 2048 tile.',ctrlArrow:'Arrow Keys to slide',ctrlWasd:'WASD alternative',ctrlSwipe:'Touch screen swipe',kbdSwipe:'Swipe',rulesTitle:'Game Rules & Scoring',rules1:'Every time you merge two tiles, the value of the new tile is added to your score. A 2+2 merge earns 4 points, a 4+4 merge earns 8 points.',rules2:'After each move, a new tile (either 2 or 4) appears randomly on an empty cell. Plan your moves carefully!',tipsTitle:'Pro Tips & Strategies',tip1:'Keep your highest-value tile in a corner. It acts as an anchor for building larger tiles.',tip2:'Build a chain of descending values along one edge (e.g., 1024 → 512 → 256 → 128).',tip3:'Avoid pressing the "down" arrow randomly. It breaks your corner strategy.',tip4:'Plan at least 2-3 moves ahead.',tip5:'When the board gets crowded, focus on freeing up space by merging low-value tiles first.',tip6:'After reaching 2048, you can continue playing to chase 4096 and 8192!',faqTitle:'Frequently Asked Questions',fq1:'Is 2048 free to play?',fa1:'Yes, this 2048 game is completely free. No registration, no downloads.',fq2:'Can I play 2048 on mobile?',fa2:'Absolutely! This 2048 game is fully responsive and supports touch swipe controls.',fq3:'Does my score get saved?',fa3:'Yes! Your best score is saved automatically in your browser\'s local storage.',fq4:'What happens after I reach 2048?',fa4:'You can choose to keep playing! After reaching 2048, click "Keep Playing".',aboutTitle:'About This 2048 Game',about1:'This is the ultimate unblocked 2048 game experience, featuring a stunning cyberpunk neon aesthetic.',about2:'Our 2048 game delivers smooth animations, responsive controls, and an addictive gameplay loop.',about3:'Challenge yourself to beat your high score. Can you reach beyond 2048?',footerNote:'Free Online 2048 Game. All rights reserved.'},
+es:{subtitle:'Edición Cyberpunk - Desliza, Une, Conquista',scoreLabel:'Puntos',bestLabel:'Mejor',newGame:'Nuevo Juego',gameOver:'Fin del Juego',finalScore:'Puntuación Final: 0',keepPlaying:'Seguir Jugando',howToTitle:'Cómo Jugar 2048 Online',howToDesc:'2048 es un adictivo juego de puzzle de fichas deslizantes. Tu objetivo es combinar fichas numeradas para alcanzar la legendaria ficha 2048.',ctrlArrow:'Flechas para deslizar',ctrlWasd:'Alternativa WASD',ctrlSwipe:'Deslizar en pantalla táctil',kbdSwipe:'Deslizar',rulesTitle:'Reglas y Puntuación',rules1:'Cada vez que fusionas dos fichas, el valor de la nueva ficha se suma a tu puntuación. Una fusión 2+2 da 4 puntos.',rules2:'Después de cada movimiento, aparece una nueva ficha (2 o 4) aleatoriamente en una celda vacía. ¡Planifica!',tipsTitle:'Consejos y Estrategias',tip1:'Mantén tu ficha de mayor valor en una esquina. Actúa como ancla para fichas más grandes.',tip2:'Construye una cadena de valores descendentes a lo largo de un borde (ej: 1024 → 512 → 256 → 128).',tip3:'Evita pulsar la flecha "abajo" al azar. Rompe tu estrategia.',tip4:'Planifica al menos 2-3 movimientos por adelantado.',tip5:'Cuando el tablero se llene, libera espacio fusionando primero las fichas de bajo valor.',tip6:'¡Después de 2048 puedes seguir para alcanzar 4096 y 8192!',faqTitle:'Preguntas Frecuentes',fq1:'¿Es 2048 gratis?',fa1:'Sí, este juego es completamente gratis. Sin registro ni descargas.',fq2:'¿Puedo jugar en móvil?',fa2:'¡Absolutamente! Totalmente responsivo y soporta controles táctiles.',fq3:'¿Se guarda mi puntuación?',fa3:'¡Sí! Se guarda automáticamente en el almacenamiento local del navegador.',fq4:'¿Qué pasa después de 2048?',fa4:'¡Puedes seguir jugando! Haz clic en "Seguir Jugando".',aboutTitle:'Acerca de Este Juego',about1:'Esta es la experiencia definitiva de 2048 sin bloquear, con una estética neón cyberpunk impresionante.',about2:'Nuestro juego ofrece animaciones suaves, controles responsivos y un bucle adictivo.',about3:'Desafíate a batir tu puntuación más alta. ¿Puedes superar 2048?',footerNote:'Juego 2048 Online Gratis. Todos los derechos reservados.'},
+de:{subtitle:'Cyberpunk Edition - Schiebe, Verschmelze, Erobere',scoreLabel:'Punkte',bestLabel:'Beste',newGame:'Neues Spiel',gameOver:'Spiel vorbei',finalScore:'Endpunktzahl: 0',keepPlaying:'Weiterspielen',howToTitle:'Wie man 2048 online spielt',howToDesc:'2048 ist ein süchtig machendes Schiebepuzzle. Dein Ziel: nummerierte Kacheln kombinieren, um die legendäre 2048-Kachel zu erreichen.',ctrlArrow:'Pfeiltasten zum Schieben',ctrlWasd:'WASD Alternative',ctrlSwipe:'Touch-Wischen',kbdSwipe:'Wischen',rulesTitle:'Regeln & Punktzahl',rules1:'Beim Verschmelzen zweier Kacheln wird der Wert der neuen Kachel zur Punktzahl addiert. 2+2 gibt 4 Punkte.',rules2:'Nach jedem Zug erscheint eine neue Kachel (2 oder 4) zufällig auf einer leeren Zelle.',tipsTitle:'Profi-Tipps & Strategien',tip1:'Halte deine höchstwertige Kachel in einer Ecke. Sie dient als Anker.',tip2:'Baue eine Kette absteigender Werte entlang einer Kante (z.B. 1024 → 512 → 256 → 128).',tip3:'Vermeide es, "Abwärts" zufällig zu drücken.',tip4:'Plane mindestens 2-3 Züge im Voraus.',tip5:'Bei vollem Brett: niedrigwertige Kacheln zuerst verschmelzen.',tip6:'Nach 2048 kannst du weiterspielen für 4096 und 8192!',faqTitle:'Häufig gestellte Fragen',fq1:'Ist 2048 kostenlos?',fa1:'Ja, völlig kostenlos. Keine Registrierung, keine Downloads.',fq2:'Kann ich mobil spielen?',fa2:'Absolut! Voll responsiv mit Touch-Wischsteuerung.',fq3:'Wird meine Punktzahl gespeichert?',fa3:'Ja! Automatisch im lokalen Speicher des Browsers.',fq4:'Was passiert nach 2048?',fa4:'Du kannst weiterspielen! Klicke auf "Weiterspielen".',aboutTitle:'Über dieses 2048-Spiel',about1:'Das ultimative ungeblockte 2048-Erlebnis mit cyberpunk-Neonästhetik.',about2:'Sanfte Animationen, responsive Steuerung, süchtig machender Spielloop.',about3:'Schlage deinen Highscore. Kannst du über 2048 hinauskommen?',footerNote:'Kostenloses Online-2048-Spiel. Alle Rechte vorbehalten.'},
+fr:{subtitle:'Édition Cyberpunk - Glisse, Fusionne, Conquiers',scoreLabel:'Score',bestLabel:'Meilleur',newGame:'Nouvelle Partie',gameOver:'Fin du Jeu',finalScore:'Score Final: 0',keepPlaying:'Continuer',howToTitle:'Comment Jouer à 2048',howToDesc:'2048 est un jeu de puzzle addictif. Votre objectif : combiner des tuiles numérotées pour atteindre la légendaire tuile 2048.',ctrlArrow:'Flèches pour glisser',ctrlWasd:'Alternative WASD',ctrlSwipe:'Balayage tactile',kbdSwipe:'Balayer',rulesTitle:'Règles & Score',rules1:'Chaque fusion de deux tuiles ajoute la valeur à votre score. 2+2 = 4 points.',rules2:'Après chaque mouvement, une nouvelle tuile (2 ou 4) apparaît aléatoirement.',tipsTitle:'Astuces & Stratégies',tip1:'Gardez votre tuile la plus haute dans un coin.',tip2:'Construisez une chaîne décroissante le long d\'un bord (ex: 1024 → 512 → 256 → 128).',tip3:'Évitez la flèche "bas" au hasard.',tip4:'Planifiez 2-3 coups à l\'avance.',tip5:'Quand le plateau se remplit, fusionnez les tuiles de faible valeur.',tip6:'Après 2048, continuez pour atteindre 4096 et 8192!',faqTitle:'Questions Fréquentes',fq1:'2048 est-il gratuit ?',fa1:'Oui, entièrement gratuit. Pas d\'inscription, pas de téléchargement.',fq2:'Puis-je jouer sur mobile ?',fa2:'Absolument ! Entièrement responsive avec contrôles tactiles.',fq3:'Mon score est-il sauvegardé ?',fa3:'Oui ! Automatiquement dans le stockage local du navigateur.',fq4:'Que se passe-t-il après 2048 ?',fa4:'Vous pouvez continuer ! Cliquez sur "Continuer".',aboutTitle:'À Propos de ce Jeu',about1:'L\'expérience ultime de 2048 débloqué avec esthétique néon cyberpunk.',about2:'Animations fluides, contrôles réactifs, boucle de jeu addictive.',about3:'Battez votre meilleur score. Pouvez-vous dépasser 2048 ?',footerNote:'Jeu 2048 en Ligne Gratuit. Tous droits réservés.'},
+ja:{subtitle:'サイバーパンクエディション - スライド、マージ、征服',scoreLabel:'スコア',bestLabel:'ベスト',newGame:'新しいゲーム',gameOver:'ゲームオーバー',finalScore:'最終スコア: 0',keepPlaying:'続けて遊ぶ',howToTitle:'2048のオンラインプレイ方法',howToDesc:'2048は中毒性のあるスライドパズルゲームです。番号タイルを組み合わせて2048タイルに到達することが目標。',ctrlArrow:'矢印キーでスライド',ctrlWasd:'WASD代替',ctrlSwipe:'タッチスクリーンスワイプ',kbdSwipe:'スワイプ',rulesTitle:'ゲームルールとスコア',rules1:'2つのタイルをマージすると、新しいタイルの値がスコアに加算されます。2+2で4点。',rules2:'各動きの後、新しいタイル（2または4）が空のセルに現れます。',tipsTitle:'プロのコツと戦略',tip1:'最高値のタイルを角に置きましょう。',tip2:'1つのエッジに沿って降順の値のチェーンを構築（例：1024 → 512 → 256 → 128）。',tip3:'「下」矢印をランダムに押さない。',tip4:'少なくとも2-3手先まで計画。',tip5:'盤が混雑したら低価値タイルをマージしてスペース確保。',tip6:'2048後も4096や8192を追えます！',faqTitle:'よくある質問',fq1:'2048は無料ですか？',fa1:'はい、完全無料です。登録不要、ダウンロード不要。',fq2:'モバイルでプレイできますか？',fa2:'もちろん！完全レスポンシブでタッチ操作対応。',fq3:'スコアは保存されますか？',fa3:'はい！ブラウザのローカルストレージに自動保存。',fq4:'2048後はどうなりますか？',fa4:'続けて遊べます！「続けて遊ぶ」をクリック。',aboutTitle:'この2048ゲームについて',about1:'究極のアンブロックド2048体験。サイバーパンクのネオン美学。',about2:'滑らかなアニメーション、レスポンシブなコントロール、中毒性のある遊び。',about3:'ハイスコアに挑戦。2048を超えられますか？',footerNote:'無料オンライン2048ゲーム。All rights reserved.'},
+zh:{subtitle:'赛博朋克版 - 滑动、合并、征服',scoreLabel:'分数',bestLabel:'最高',newGame:'新游戏',gameOver:'游戏结束',finalScore:'最终得分: 0',keepPlaying:'继续游戏',howToTitle:'如何在线玩 2048',howToDesc:'2048 是一款令人上瘾的滑块拼图游戏。你的目标是合并数字方块，达到传奇的 2048 方块。',ctrlArrow:'方向键滑动',ctrlWasd:'WASD 替代',ctrlSwipe:'触屏滑动',kbdSwipe:'滑动',rulesTitle:'游戏规则与计分',rules1:'每次合并两个方块，新方块的值都会加到你的分数中。2+2 得 4 分。',rules2:'每次移动后，会随机在空格中出现一个新方块（2 或 4）。',tipsTitle:'高级技巧与策略',tip1:'把最高值的方块放在角落。',tip2:'沿着一条边构建递减值链（例如：1024 → 512 → 256 → 128）。',tip3:'避免随意按"下"键。',tip4:'至少提前规划 2-3 步。',tip5:'棋盘拥挤时先合并低价值方块。',tip6:'达到 2048 后可以继续追逐 4096 和 8192！',faqTitle:'常见问题',fq1:'2048 免费玩吗？',fa1:'是的，完全免费。无需注册，无需下载。',fq2:'手机上能玩吗？',fa2:'当然！完全响应式，支持触屏滑动。',fq3:'分数会保存吗？',fa3:'会！自动保存在浏览器本地存储。',fq4:'达到 2048 后会怎样？',fa4:'可以继续玩！点击"继续游戏"。',aboutTitle:'关于这款 2048 游戏',about1:'终极的无屏蔽 2048 体验，赛博朋克霓虹美学。',about2:'流畅动画、响应式控件、上瘾的游戏循环。',about3:'挑战自己打破最高分。能超越 2048 吗？',footerNote:'免费在线 2048 游戏。版权所有。'},
+pt:{subtitle:'Edição Cyberpunk - Desliza, Funde, Conquista',scoreLabel:'Pontos',bestLabel:'Melhor',newGame:'Novo Jogo',gameOver:'Fim de Jogo',finalScore:'Pontuação Final: 0',keepPlaying:'Continuar',howToTitle:'Como Jogar 2048 Online',howToDesc:'2048 é um jogo de quebra-cabeça viciante. Combine peças numeradas para alcançar a peça 2048.',ctrlArrow:'Setas para deslizar',ctrlWasd:'Alternativa WASD',ctrlSwipe:'Deslizar na tela',kbdSwipe:'Deslizar',rulesTitle:'Regras & Pontuação',rules1:'Cada fusão de duas peças adiciona o valor à sua pontuação. 2+2 dá 4 pontos.',rules2:'Após cada movimento, uma nova peça (2 ou 4) aparece aleatoriamente.',tipsTitle:'Dicas Profissionais',tip1:'Mantenha sua peça de maior valor em um canto.',tip2:'Construa uma cadeia decrescente em uma borda (ex: 1024 → 512 → 256 → 128).',tip3:'Evite a seta "para baixo" aleatoriamente.',tip4:'Planeje 2-3 movimentos à frente.',tip5:'Quando o tabuleiro fica cheio, funda peças de baixo valor primeiro.',tip6:'Após 2048, continue para 4096 e 8192!',faqTitle:'Perguntas Frequentes',fq1:'2048 é gratuito?',fa1:'Sim, completamente gratuito. Sem registro, sem downloads.',fq2:'Posso jogar no celular?',fa2:'Absolutamente! Totalmente responsivo com controles touch.',fq3:'Minha pontuação é salva?',fa3:'Sim! Salva automaticamente no armazenamento local.',fq4:'O que acontece depois de 2048?',fa4:'Pode continuar jogando! Clique em "Continuar".',aboutTitle:'Sobre Este Jogo',about1:'A experiência definitiva de 2048 desbloqueado com estética neon cyberpunk.',about2:'Animações suaves, controles responsivos, loop viciante.',about3:'Bata sua pontuação máxima. Consegue ir além de 2048?',footerNote:'Jogo 2048 Online Grátis. Todos os direitos reservados.'},
+it:{subtitle:'Edizione Cyberpunk - Scorri, Fondi, Conquista',scoreLabel:'Punti',bestLabel:'Migliore',newGame:'Nuova Partita',gameOver:'Fine Partita',finalScore:'Punteggio Finale: 0',keepPlaying:'Continua',howToTitle:'Come Giocare a 2048',howToDesc:'2048 è un puzzle che dà dipendenza. Combina piastrelle numerate per raggiungere la 2048.',ctrlArrow:'Frecce per scorrere',ctrlWasd:'Alternativa WASD',ctrlSwipe:'Tocco e scorrimento',kbdSwipe:'Scorri',rulesTitle:'Regole & Punteggio',rules1:'Ogni fusione aggiunge il valore al punteggio. 2+2 vale 4 punti.',rules2:'Dopo ogni mossa, una nuova piastrella (2 o 4) appare casualmente.',tipsTitle:'Consigli & Strategie',tip1:'Tieni la piastrella più alta in un angolo.',tip2:'Costruisci una catena decrescente lungo un bordo (es: 1024 → 512 → 256 → 128).',tip3:'Evita la freccia "giù" a caso.',tip4:'Pianifica 2-3 mosse in anticipo.',tip5:'Quando il tabellone si affolla, fondi prima le piastrelle di basso valore.',tip6:'Dopo 2048, continua per 4096 e 8192!',faqTitle:'Domande Frequenti',fq1:'2048 è gratis?',fa1:'Sì, completamente gratuito. Niente registrazione, niente download.',fq2:'Posso giocare su mobile?',fa2:'Assolutamente! Completamente responsive con controlli touch.',fq3:'Il punteggio viene salvato?',fa3:'Sì! Salvato automaticamente nello storage locale.',fq4:'Cosa succede dopo 2048?',fa4:'Puoi continuare! Clicca "Continua".',aboutTitle:'Su Questo Gioco',about1:'L\'esperienza definitiva di 2048 sbloccato con estetica neon cyberpunk.',about2:'Animazioni fluide, controlli reattivi, loop coinvolgente.',about3:'Batti il tuo punteggio. Puoi superare 2048?',footerNote:'Gioco 2048 Online Gratuito. Tutti i diritti riservati.'},
+ru:{subtitle:'Киберпанк Издание - Сдвигай, Объединяй, Покоряй',scoreLabel:'Очки',bestLabel:'Рекорд',newGame:'Новая Игра',gameOver:'Игра окончена',finalScore:'Финальный счёт: 0',keepPlaying:'Продолжить',howToTitle:'Как играть в 2048',howToDesc:'2048 — затягивающая головоломка. Объединяйте плитки, чтобы достичь 2048.',ctrlArrow:'Стрелки для движения',ctrlWasd:'WASD альтернатива',ctrlSwipe:'Свайп на сенсоре',kbdSwipe:'Свайп',rulesTitle:'Правила и Счёт',rules1:'Каждое объединение добавляет значение к счёту. 2+2 даёт 4 очка.',rules2:'После каждого хода новая плитка (2 или 4) появляется случайно.',tipsTitle:'Профессиональные Советы',tip1:'Держите плитку с самым высоким значением в углу.',tip2:'Стройте цепочку убывающих значений (напр: 1024 → 512 → 256 → 128).',tip3:'Избегайте случайного нажатия "вниз".',tip4:'Планируйте 2-3 хода вперёд.',tip5:'При заполнении поля объединяйте низкоценные плитки.',tip6:'После 2048 можно продолжать для 4096 и 8192!',faqTitle:'Часто Задаваемые Вопросы',fq1:'2048 бесплатна?',fa1:'Да, полностью бесплатна. Без регистрации, без скачиваний.',fq2:'Можно играть на мобильном?',fa2:'Конечно! Полностью адаптивна со свайп-управлением.',fq3:'Сохраняется ли счёт?',fa3:'Да! Автоматически в локальном хранилище браузера.',fq4:'Что после 2048?',fa4:'Можно продолжить! Нажмите "Продолжить".',aboutTitle:'Об этой Игре',about1:'Полный опыт 2048 без блокировок с киберпанк-неоновой эстетикой.',about2:'Плавные анимации, отзывчивое управление, затягивающий цикл.',about3:'Побейте рекорд. Сможете ли превзойти 2048?',footerNote:'Бесплатная Онлайн Игра 2048. Все права защищены.'},
+ko:{subtitle:'사이버펑크 에디션 - 슬라이드, 병합, 정복',scoreLabel:'점수',bestLabel:'최고',newGame:'새 게임',gameOver:'게임 오버',finalScore:'최종 점수: 0',keepPlaying:'계속 플레이',howToTitle:'2048 온라인 플레이 방법',howToDesc:'2048은 중독성 있는 슬라이딩 퍼즐 게임입니다. 번호 타일을 결합하여 2048에 도달하세요.',ctrlArrow:'화살표 키로 슬라이드',ctrlWasd:'WASD 대체',ctrlSwipe:'터치 스와이프',kbdSwipe:'스와이프',rulesTitle:'규칙 & 점수',rules1:'두 타일을 병합하면 새 타일 값이 점수에 추가됩니다. 2+2는 4점.',rules2:'각 이동 후 새 타일(2 또는 4)이 빈 셀에 무작위로 나타납니다.',tipsTitle:'프로 팁 & 전략',tip1:'가장 높은 값의 타일을 모서리에 두세요.',tip2:'한 가장자리를 따라 내림차순 체인 구축 (예: 1024 → 512 → 256 → 128).',tip3:'"아래" 화살표를 무작위로 누르지 마세요.',tip4:'최소 2-3 수 앞을 계획.',tip5:'보드 혼잡 시 낮은 값 타일을 먼저 병합.',tip6:'2048 도달 후에도 4096, 8192를 추격 가능!',faqTitle:'자주 묻는 질문',fq1:'2048은 무료인가요?',fa1:'네, 완전 무료입니다. 등록 불필요, 다운로드 불필요.',fq2:'모바일에서 플레이 가능?',fa2:'물론입니다! 완전 반응형이며 터치 스와이프 지원.',fq3:'점수가 저장되나요?',fa3:'네! 브라우저 로컬 저장소에 자동 저장.',fq4:'2048 도달 후에는?',fa4:'계속 플레이 가능! "계속 플레이"를 클릭.',aboutTitle:'이 2048 게임에 대해',about1:'멋진 사이버펑크 네온 미학을 갖춘 궁극의 2048 경험.',about2:'부드러운 애니메이션, 반응형 컨트롤, 중독성 있는 게임 루프.',about3:'최고 점수에 도전. 2048을 넘어설 수 있나요?',footerNote:'무료 온라인 2048 게임. 모든 권리 보유.'},
+ar:{subtitle:'إصدار سايبربانك - اسحب، ادمج، اقهر',scoreLabel:'النقاط',bestLabel:'الأفضل',newGame:'لعبة جديدة',gameOver:'انتهت اللعبة',finalScore:'النتيجة النهائية: 0',keepPlaying:'استمر',howToTitle:'كيف تلعب 2048',howToDesc:'2048 لعبة ألغاز مدمنة. ادمج البلاطات للوصول إلى 2048.',ctrlArrow:'مفاتيح الأسهم',ctrlWasd:'بديل WASD',ctrlSwipe:'سحب اللمس',kbdSwipe:'اسحب',rulesTitle:'القواعد والنقاط',rules1:'كل دمج يضيف القيمة إلى النتيجة. 2+2 يعطي 4 نقاط.',rules2:'بعد كل حركة، تظهر بلاطة جديدة (2 أو 4) عشوائياً.',tipsTitle:'نصائح احترافية',tip1:'احتفظ بالبلاطة الأعلى في زاوية.',tip2:'ابنِ سلسلة تنازلية على حافة (مثل: 1024 → 512 → 256 → 128).',tip3:'تجنب سهم "الأسفل" عشوائياً.',tip4:'خطط 2-3 خطوات مسبقاً.',tip5:'عند الازدحام، ادمج البلاطات المنخفضة أولاً.',tip6:'بعد 2048 يمكن متابعة 4096 و 8192!',faqTitle:'الأسئلة الشائعة',fq1:'هل 2048 مجانية؟',fa1:'نعم، مجانية تماماً. بدون تسجيل أو تنزيلات.',fq2:'هل يمكن اللعب على الجوال؟',fa2:'بالتأكيد! متجاوبة بالكامل مع التحكم باللمس.',fq3:'هل تُحفظ النتيجة؟',fa3:'نعم! تلقائياً في التخزين المحلي للمتصفح.',fq4:'ماذا بعد 2048؟',fa4:'يمكن المتابعة! انقر "استمر".',aboutTitle:'عن هذه اللعبة',about1:'تجربة 2048 المفتوحة النهائية بجمالية نيون سايبربانك.',about2:'رسوم متحركة سلسة، تحكم استجابي، حلقة لعب مدمنة.',about3:'حطم أعلى نتيجة. هل تتجاوز 2048؟',footerNote:'لعبة 2048 أونلاين مجاناً. كل الحقوق محفوظة.'},
+hi:{subtitle:'साइबरपंक संस्करण - स्लाइड, मर्ज, जीतें',scoreLabel:'स्कोर',bestLabel:'सर्वश्रेष्ठ',newGame:'नया खेल',gameOver:'खेल समाप्त',finalScore:'अंतिम स्कोर: 0',keepPlaying:'खेलते रहें',howToTitle:'2048 ऑनलाइन कैसे खेलें',howToDesc:'2048 एक लत वाला स्लाइडिंग पहेली खेल है। टाइलों को मिलाकर 2048 तक पहुँचें।',ctrlArrow:'तीर कुंजियाँ',ctrlWasd:'WASD विकल्प',ctrlSwipe:'टच स्वाइप',kbdSwipe:'स्वाइप',rulesTitle:'नियम और स्कोरिंग',rules1:'हर मर्ज से नए टाइल का मान स्कोर में जुड़ता है। 2+2 = 4 अंक।',rules2:'प्रत्येक चाल के बाद, नया टाइल (2 या 4) यादृच्छिक रूप से प्रकट होता है।',tipsTitle:'प्रो टिप्स',tip1:'सर्वोच्च मान वाला टाइल कोने में रखें।',tip2:'एक किनारे पर अवरोही चेन बनाएं (जैसे: 1024 → 512 → 256 → 128)।',tip3:'"नीचे" तीर को यादृच्छिक रूप से न दबाएं।',tip4:'2-3 चालें आगे की योजना बनाएं।',tip5:'भीड़ होने पर, कम मूल्य के टाइल पहले मर्ज करें।',tip6:'2048 के बाद 4096 और 8192 का पीछा कर सकते हैं!',faqTitle:'अक्सर पूछे जाने वाले प्रश्न',fq1:'क्या 2048 मुफ्त है?',fa1:'हाँ, पूरी तरह मुफ्त। कोई पंजीकरण नहीं, कोई डाउनलोड नहीं।',fq2:'मोबाइल पर खेल सकते हैं?',fa2:'बिल्कुल! पूरी तरह रिस्पॉन्सिव टच स्वाइप के साथ।',fq3:'क्या स्कोर सेव होता है?',fa3:'हाँ! ब्राउज़र के लोकल स्टोरेज में स्वचालित।',fq4:'2048 के बाद क्या?',fa4:'जारी रख सकते हैं! "खेलते रहें" क्लिक करें।',aboutTitle:'इस खेल के बारे में',about1:'अंतिम अनब्लॉक्ड 2048 अनुभव साइबरपंक नियॉन सौंदर्य के साथ।',about2:'चिकनी एनिमेशन, उत्तरदायी नियंत्रण, लत वाला गेमप्ले।',about3:'अपना उच्च स्कोर तोड़ें। 2048 से आगे जा सकते हैं?',footerNote:'मुफ्त ऑनलाइन 2048 खेल। सर्वाधिकार सुरक्षित।'},
+th:{subtitle:'รุ่นไซเบอร์พังก์ - เลื่อน รวม พิชิต',scoreLabel:'คะแนน',bestLabel:'สูงสุด',newGame:'เกมใหม่',gameOver:'จบเกม',finalScore:'คะแนนสุดท้าย: 0',keepPlaying:'เล่นต่อ',howToTitle:'วิธีเล่น 2048',howToDesc:'2048 เป็นเกมปริศนาน่าหลงใหล รวมแผ่นตัวเลขเพื่อไปถึง 2048',ctrlArrow:'ปุ่มลูกศร',ctrlWasd:'WASD ทางเลือก',ctrlSwipe:'ปัดหน้าจอ',kbdSwipe:'ปัด',rulesTitle:'กฎและการให้คะแนน',rules1:'การรวมแผ่นเพิ่มค่าให้คะแนน 2+2 = 4 คะแนน',rules2:'หลังแต่ละการเคลื่อนไหว แผ่นใหม่ (2 หรือ 4) ปรากฏแบบสุ่ม',tipsTitle:'เคล็ดลับมืออาชีพ',tip1:'เก็บแผ่นค่าสูงสุดไว้ในมุม',tip2:'สร้างห่วงโซ่ลดลงตามขอบ (เช่น 1024 → 512 → 256 → 128)',tip3:'หลีกเลี่ยงการกด "ลง" แบบสุ่ม',tip4:'วางแผน 2-3 ตาล่วงหน้า',tip5:'เมื่อกระดานแน่น ให้รวมแผ่นมูลค่าต่ำก่อน',tip6:'หลัง 2048 สามารถไล่ตาม 4096 และ 8192!',faqTitle:'คำถามที่พบบ่อย',fq1:'2048 เล่นฟรีไหม?',fa1:'ใช่ ฟรีอย่างสมบูรณ์ ไม่ต้องลงทะเบียนหรือดาวน์โหลด',fq2:'เล่นบนมือถือได้ไหม?',fa2:'แน่นอน! ตอบสนองเต็มรูปแบบรองรับการสัมผัส',fq3:'คะแนนบันทึกไหม?',fa3:'ใช่! บันทึกอัตโนมัติในที่จัดเก็บข้อมูลของเบราว์เซอร์',fq4:'อะไรเกิดขึ้นหลัง 2048?',fa4:'เล่นต่อได้! คลิก "เล่นต่อ"',aboutTitle:'เกี่ยวกับเกม',about1:'ประสบการณ์ 2048 ปลดล็อคที่สุด พร้อมความสวยงามแบบนีออนไซเบอร์พังก์',about2:'แอนิเมชั่นราบรื่น การควบคุมตอบสนอง วงจรเกมน่าหลงใหล',about3:'ทำลายคะแนนสูงสุด ไปไกลกว่า 2048 ได้ไหม?',footerNote:'เกม 2048 ออนไลน์ฟรี สงวนลิขสิทธิ์'},
+tr:{subtitle:'Cyberpunk Sürümü - Kaydır, Birleştir, Fethet',scoreLabel:'Puan',bestLabel:'En İyi',newGame:'Yeni Oyun',gameOver:'Oyun Bitti',finalScore:'Son Skor: 0',keepPlaying:'Devam Et',howToTitle:'2048 Online Nasıl Oynanır',howToDesc:'2048 bağımlılık yapan bir bulmaca. Numaralı karoları birleştirip 2048\'e ulaşın.',ctrlArrow:'Ok tuşları',ctrlWasd:'WASD alternatifi',ctrlSwipe:'Dokunmatik kaydırma',kbdSwipe:'Kaydır',rulesTitle:'Kurallar & Puanlama',rules1:'Her birleştirme yeni karonun değerini puana ekler. 2+2 = 4 puan.',rules2:'Her hamleden sonra boş hücreye yeni karo (2 veya 4) rastgele görünür.',tipsTitle:'Profesyonel İpuçları',tip1:'En yüksek değerli karoyu köşede tutun.',tip2:'Bir kenar boyunca azalan zincir oluşturun (örn: 1024 → 512 → 256 → 128).',tip3:'"Aşağı" okuna rastgele basmayın.',tip4:'2-3 hamle önceden plan yapın.',tip5:'Tahta dolduğunda düşük değerli karoları önce birleştirin.',tip6:'2048\'den sonra 4096 ve 8192 için devam edebilirsiniz!',faqTitle:'Sıkça Sorulan Sorular',fq1:'2048 ücretsiz mi?',fa1:'Evet, tamamen ücretsiz. Kayıt yok, indirme yok.',fq2:'Mobilde oynayabilir miyim?',fa2:'Kesinlikle! Tamamen duyarlı, dokunmatik destekli.',fq3:'Skorum kaydediliyor mu?',fa3:'Evet! Tarayıcı yerel depolama alanına otomatik.',fq4:'2048\'den sonra ne olur?',fa4:'Devam edebilirsiniz! "Devam Et"e tıklayın.',aboutTitle:'Bu Oyun Hakkında',about1:'Çarpıcı cyberpunk neon estetiğine sahip nihai engelsiz 2048 deneyimi.',about2:'Pürüzsüz animasyonlar, duyarlı kontroller, bağımlılık yapan döngü.',about3:'Skorunuzu kırın. 2048\'i geçebilir misiniz?',footerNote:'Ücretsiz Online 2048 Oyunu. Tüm hakları saklıdır.'}
+    };
+    var meta={
+en:{title:'Play 2048 Online Free - Cyberpunk Edition | 2048 Game Unblocked',desc:'Play 2048 game online for free. Cyberpunk neon theme, smooth animations, keyboard & swipe controls.'},
+es:{title:'Jugar 2048 Online Gratis - Edición Cyberpunk',desc:'Juega 2048 online gratis. Tema neón cyberpunk, animaciones suaves.'},
+de:{title:'2048 Online Kostenlos Spielen - Cyberpunk Edition',desc:'Spiele 2048 kostenlos online. Cyberpunk-Neon-Thema.'},
+fr:{title:'Jouer à 2048 en Ligne Gratuit - Édition Cyberpunk',desc:'Jouez à 2048 en ligne gratuitement. Thème néon cyberpunk.'},
+ja:{title:'2048をオンラインで無料プレイ - サイバーパンクエディション',desc:'2048ゲームを無料でオンラインプレイ。サイバーパンクのネオンテーマ。'},
+zh:{title:'免费在线玩 2048 - 赛博朋克版',desc:'免费在线玩 2048 游戏。赛博朋克霓虹主题，流畅动画。'},
+pt:{title:'Jogar 2048 Online Grátis - Edição Cyberpunk',desc:'Jogue 2048 online grátis. Tema neon cyberpunk.'},
+it:{title:'Gioca a 2048 Online Gratis - Edizione Cyberpunk',desc:'Gioca a 2048 online gratis. Tema neon cyberpunk.'},
+ru:{title:'Играть в 2048 онлайн бесплатно - Киберпанк Издание',desc:'Играйте в 2048 онлайн бесплатно. Киберпанк-неоновая тема.'},
+ko:{title:'2048 온라인 무료 플레이 - 사이버펑크 에디션',desc:'2048 게임을 무료로 온라인 플레이.'},
+ar:{title:'لعب 2048 مجاناً أونلاين - إصدار سايبربانك',desc:'العب 2048 مجاناً أونلاين.'},
+hi:{title:'2048 ऑनलाइन मुफ्त खेलें - साइबरपंक संस्करण',desc:'2048 गेम मुफ्त ऑनलाइन खेलें।'},
+th:{title:'เล่น 2048 ออนไลน์ฟรี - รุ่นไซเบอร์พังก์',desc:'เล่นเกม 2048 ฟรีออนไลน์'},
+tr:{title:'2048\'i Online Ücretsiz Oyna - Cyberpunk Sürümü',desc:'2048 oyununu ücretsiz online oynayın.'}
+    };
+    var sel=document.createElement('select');
+    sel.id='langSwitcher';
+    Object.keys(LANGS).forEach(function(code){var opt=document.createElement('option');opt.value=code;opt.textContent=LANGS[code];sel.appendChild(opt);});
+    sel.style.cssText='position:fixed;top:12px;right:12px;z-index:9999;padding:6px 28px 6px 10px;border:1px solid #444;border-radius:8px;background:#1a1a2e url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 12 12\'%3E%3Cpath d=\'M3 5l3 3 3-3\' fill=\'none\' stroke=\'%2300ffff\' stroke-width=\'1.5\'/%3E%3C/svg%3E") no-repeat right 8px center;background-size:12px;font-size:13px;color:#00ffff;cursor:pointer;outline:none;appearance:none;-webkit-appearance:none;box-shadow:0 0 10px rgba(0,255,255,0.2)';
+    document.body.prepend(sel);
+    window._t=function(key){var lang=localStorage.getItem('siteLang')||detectLang();return(translations[lang]&&translations[lang][key])||translations.en[key]||key;};
+    function detectLang(){var saved=localStorage.getItem('siteLang');if(saved&&translations[saved])return saved;var nav=(navigator.language||navigator.userLanguage||'en').toLowerCase();var base=nav.split('-')[0];if(translations[base])return base;return'en';}
+    function applyI18n(lang){
+      if(!translations[lang])lang='en';
+      localStorage.setItem('siteLang',lang);
+      sel.value=lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el){var key=el.getAttribute('data-i18n');if(translations[lang][key]!==undefined)el.innerHTML=translations[lang][key];});
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){var key=el.getAttribute('data-i18n-placeholder');if(translations[lang][key]!==undefined)el.placeholder=translations[lang][key];});
+      if(meta[lang]){document.title=meta[lang].title;var dm=document.querySelector('meta[name="description"]');if(dm)dm.content=meta[lang].desc;}
+      document.documentElement.lang=lang;
+    }
+    sel.addEventListener('change',function(){applyI18n(this.value);});
+    applyI18n(detectLang());
+    })();
     </script>
 </Layout>
