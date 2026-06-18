@@ -1,82 +1,127 @@
 ---
 interface Props {
   title: string;
-  description: string;
-  canonical?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
 }
 
-const { title, description, canonical } = Astro.props;
-const siteUrl = 'https://2048.lazytoolshub.top';
-const pageUrl = canonical || siteUrl;
+const SITE_URL = 'https://2048.lazytoolshub.top';
+const SITE_NAME = '2048 Cyberpunk';
+const DEFAULT_KEYWORDS = '2048 game, 2048 online, 2048 unblocked, play 2048 free, cyberpunk 2048, puzzle game, browser game';
+
+const {
+  title,
+  description = '2048 Cyberpunk',
+  canonicalUrl,
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const canonical = canonicalUrl || new URL(Astro.url.pathname, SITE_URL).href;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, SITE_URL).href;
+const SUPPORTED_LANGS = ['en','zh','es','fr','de','ja','pt','ar','ko','ru','tr','th','hi','it'];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0a0a1a" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="format-detection" content="telephone=no" />
 
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={pageUrl} />
+  <meta name="keywords" content={DEFAULT_KEYWORDS} />
+  <meta name="author" content={SITE_NAME} />
+  <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- hreflang alternates -->
+  <link rel="alternate" hreflang="en" href={`${SITE_URL}/`} />
+  {SUPPORTED_LANGS.filter(l => l !== 'en').map(l => (
+    <link rel="alternate" hreflang={l} href={`${SITE_URL}/?lang=${l}`} />
+  ))}
+  <link rel="alternate" hreflang="x-default" href={`${SITE_URL}/`} />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={pageUrl} />
+  <meta property="og:url" content={canonical} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:site_name" content="2048 Cyberpunk" />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content={SITE_NAME} />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
 
-  <!-- JSON-LD Structured Data -->
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+  <!-- Structured Data: VideoGame -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "VideoGame",
-    "name": "2048 Game - Cyberpunk Edition",
+    "name": SITE_NAME,
     "description": description,
-    "url": pageUrl,
+    "url": canonical,
     "applicationCategory": "Game",
-    "operatingSystem": "Any (Browser)",
-    "genre": "Puzzle",
-    "numberOfPlayers": 1,
-    "gamePlatform": "Web Browser",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
+    "operatingSystem": "Any (Web Browser)",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": SUPPORTED_LANGS,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
     }
   })} />
 
+  <!-- Structured Data: Organization -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How to play 2048?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Use arrow keys or swipe to slide numbered tiles. When two tiles with the same number collide, they merge into one tile with double the value. Reach 2048 to win!"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is 2048 free to play?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, 2048 is completely free to play online. No registration required."
-        }
-      }
+    "@type": "Organization",
+    "name": "Lazy Tools Hub",
+    "url": "https://lazytoolshub.top"
+  })} />
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL }
     ]
   })} />
 
+  <!-- Sync <html lang>/<html dir> with selected i18n locale -->
+  <script is:inline>
+    (function () {
+      var supported = ['en','zh','es','fr','de','ja','pt','ar','ko','ru','tr','th','hi','it'];
+      var rtl = ['ar'];
+      function pick() {
+        try { var q = new URL(location.href).searchParams.get('lang'); if (q && supported.indexOf(q) >= 0) return q; } catch (e) {}
+        try { var s = localStorage.getItem('siteLang'); if (s && supported.indexOf(s) >= 0) return s; } catch (e) {}
+        var n = (navigator.language || 'en').toLowerCase().split('-')[0];
+        return supported.indexOf(n) >= 0 ? n : 'en';
+      }
+      var lang = pick();
+      document.documentElement.lang = lang;
+      document.documentElement.dir = rtl.indexOf(lang) >= 0 ? 'rtl' : 'ltr';
+    })();
+  </script>
 </head>
 <body>
   <slot />

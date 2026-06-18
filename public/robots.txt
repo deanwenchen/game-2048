@@ -1,4 +1,18 @@
+# robots.txt for https://2048.lazytoolshub.top
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_astro/
 
-Sitemap: https://2048.lazytoolshub.top/sitemap-index.xml
+# Block aggressive AI scrapers (optional)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://2048.lazytoolshub.top/sitemap.xml
